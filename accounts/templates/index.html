@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>hello world</h1>
+
+<!--login register and logout links-->
     <ul>
         {% if request.user.is_authenticated %}
         <li><a href="/logout">Logout</a></li>
@@ -16,5 +18,18 @@
         <li><a href="/register">Register</a></li>
         {% endif %}
     </ul>
+    
+<!--if user is not logged n then dont display you are logged in-->
+        {% if request.user.is_authenticated %}
+            <p>You are logged in as {{ request.user.email }}</p>
+        {% endif %}
+        
+<!--list of contacts-->
+    <ul>
+        {% for contact in contacts %}
+        <li>{{ contact }}</li>
+        {% endfor %}
+    </ul>
+    
 </body>
 </html>
